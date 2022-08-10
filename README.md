@@ -27,3 +27,5 @@ importScanResults.ps1:<br>
 -> ASE_HOSTNAME<br>
 -> ASE_API_KEY_ID<br>
 -> ASE_API_KEY_SECRET<br>
+<br>
+After download this project, install all requirements, add the variables you are ready to run the automation. Frist of all, execute appscan presence, open pwsh.exe and run .\startWebHookProxy.ps1.
