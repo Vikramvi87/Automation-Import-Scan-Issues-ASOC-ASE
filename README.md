@@ -16,17 +16,15 @@ py -m pip install requests
 ```
 <br>
 Change variables in the files below:<br>
-  Config.json:<br>
-```
-HOSTNAME
-ASOC_API_KEY_ID
-ASOC_API_KEY_SECRET
-APPSCAN_PRESENCE_ID
-```
+Config.json:<br>
+<br>
+* *HOSTNAME<br>
+ASOC_API_KEY_ID<br>
+ASOC_API_KEY_SECRET<br>
+APPSCAN_PRESENCE_ID<br>* *
+
 <br>
   importScanResults.ps1:<br>
-```
-ASE_HOSTNAME
-ASE_API_KEY_ID
-ASE_API_KEY_SECRET
-```
+* *ASE_HOSTNAME<br>
+ASE_API_KEY_ID<br>
+ASE_API_KEY_SECRET<br>* *
