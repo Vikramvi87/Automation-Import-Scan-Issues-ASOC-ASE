@@ -19,7 +19,7 @@ Change variables in the files below:<br>
   Config.json:<br>
 ```
 HOSTNAME
-ASOC_API_KEY_ID>
+ASOC_API_KEY_ID
 ASOC_API_KEY_SECRET
 APPSCAN_PRESENCE_ID
 ```
@@ -29,4 +29,4 @@ APPSCAN_PRESENCE_ID
 ASE_HOSTNAME
 ASE_API_KEY_ID
 ASE_API_KEY_SECRET
-    ```
+```
