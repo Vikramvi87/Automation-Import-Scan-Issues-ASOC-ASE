@@ -14,3 +14,17 @@ Install Python modules<br>
 py -m pip install Flask
 py -m pip install requests
 ```
+<br>
+Change variables in the files below:
+Config.json:
+<HOSTNAME>
+<ASOC_API_KEY_ID>
+<ASOC_API_KEY_SECRET>
+<APPSCAN_PRESENCE_ID>
+  
+importScanResults.ps1:
+<ASE_HOSTNAME>
+<ASE_API_KEY_ID>
+<ASE_API_KEY_SECRET>
+  
+  
