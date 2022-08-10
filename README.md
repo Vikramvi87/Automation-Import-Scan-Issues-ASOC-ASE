@@ -17,7 +17,7 @@ py -m pip install requests
 <br>
 Change variables in the files below:<br>
 Config.json:<br>
--> HOSTNAME<br>
+-> HOSTNAME<br> Where is running this service
 -> ASOC_API_KEY_ID<br>
 -> ASOC_API_KEY_SECRET<br>
 -> APPSCAN_PRESENCE_ID<br>
