@@ -6,8 +6,9 @@
 ## Requirements
 1 - AppScan Enterprise Server hostname<br>
 2 - AppScan Enterprise key pair<br>
-3 - Python3 for Windows (Flask and requests)<br>
-4 - Powershell 7.x<br>
+3 - AppScan Presence (ASoC)
+4 - Python3 for Windows (Flask and requests)<br>
+5 - Powershell 7.x<br>
 <br>
 Install Python modules<br>
 ```
@@ -28,4 +29,5 @@ importScanResults.ps1:<br>
 -> ASE_API_KEY_ID<br>
 -> ASE_API_KEY_SECRET<br>
 <br>
-After download this project, install all requirements, add the variables you are ready to run the automation. Frist of all, execute appscan presence, open pwsh.exe and run .\startWebHookProxy.ps1.
+After download this project, install all requirements, add the variables you are ready to run the automation. First of all, execute appscan presence, open pwsh.exe and run .\startWebHookProxy.ps1. <br>
+PS: AppScan Presence will connect ASoC and webhookproxy local service. It needs to be up and running at all times.
