@@ -3,8 +3,8 @@
     "port": "5000",
     "log_level": "INFO",
 	"asoc_api_key": {
-		"KeyId": "<ASOC_KEY_ID>",
-		"KeySecret": "<ASOC_KEY_SECRET>"
+		"KeyId": "<ASOC_API_KEY_ID>",
+		"KeySecret": "<ASOC_API_KEY_SECRET>"
 	},
 	"webhooks": {
 		"asoc":[
