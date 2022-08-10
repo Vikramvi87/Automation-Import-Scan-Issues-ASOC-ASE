@@ -4,12 +4,12 @@
 
 
 ## Requirements
-1 - AppScan Enterprise Server hostname
-2 - AppScan Enterprise key pair
-3 - Python3 for Windows (Flask and requests)
-4 - Powershell 7.x
-
-Install Python modules
+1 - AppScan Enterprise Server hostname<br>
+2 - AppScan Enterprise key pair<br>
+3 - Python3 for Windows (Flask and requests)<br>
+4 - Powershell 7.x<br>
+<br>
+Install Python modules<br>
 ```
 py -m pip install Flask
 py -m pip install requests
