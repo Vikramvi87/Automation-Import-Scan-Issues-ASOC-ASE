@@ -18,12 +18,12 @@ py -m pip install requests
 <br>
 Change variable in the file below:<br>
 startWebHookProxy.ps1:<br>
-$asocApiKeyId='aaaaaaaaaaaaaaaaaaaaaaaaa'
-$asocApiKeySecret='aaaaaaaaaaaaaaaaaaaaaaaaa'
-$presenceId='aaaaaaaaaaaaaaaaaaaaaaaaa'
-$aseHostname='aaaaaaaaaaaaaaaaaaaaaaaaa'
-$aseApiKeyId='aaaaaaaaaaaaaaaaaaaaaaaaa'
-$aseApiKeySecret='aaaaaaaaaaaaaaaaaaaaaaaaa'
+$asocApiKeyId='aaaaaaaaaaaaaaaaaaaaaaaaa'<br>
+$asocApiKeySecret='aaaaaaaaaaaaaaaaaaaaaaaaa'<br>
+$presenceId='aaaaaaaaaaaaaaaaaaaaaaaaa'<br>
+$aseHostname='aaaaaaaaaaaaaaaaaaaaaaaaa'<br>
+$aseApiKeyId='aaaaaaaaaaaaaaaaaaaaaaaaa'<br>
+$aseApiKeySecret='aaaaaaaaaaaaaaaaaaaaaaaaa'<br>
 <br>
 After download this project, install all requirements, add the variables and you are ready to run the automation. Just run .\startWebHookProxy.ps1. <br>
 PS: AppScan Presence will connect ASoC and webhookproxy local service. It needs to be up and running at all time.
