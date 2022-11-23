@@ -6,9 +6,10 @@
 ## Requirements
 1 - AppScan Enterprise Server hostname<br>
 2 - AppScan Enterprise key pair<br>
-3 - AppScan Presence (ASoC)<br>
-4 - Python3 for Windows (Flask and requests)<br>
-5 - Powershell 7.x<br>
+3 - AppScan on Cloud key pair<br>
+4 - AppScan Presence<br>
+5 - Python3 for Windows (Flask and requests)<br>
+6 - Powershell 7.x<br>
 <br>
 Install Python modules<br>
 ```
