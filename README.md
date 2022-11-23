@@ -16,14 +16,13 @@ py -m pip install Flask
 py -m pip install requests
 ```
 <br>
-Change variable in the file below:<br>
-startWebHookProxy.ps1:<br>
+TO RUN: <br>
+1 - Download the project<br>
+2 - Change variable in the file startWebHookProxy.ps1:<br>
 $asocApiKeyId='aaaaaaaaaaaaaaaaaaaaaaaaa'<br>
 $asocApiKeySecret='aaaaaaaaaaaaaaaaaaaaaaaaa'<br>
 $presenceId='aaaaaaaaaaaaaaaaaaaaaaaaa'<br>
 $aseHostname='aaaaaaaaaaaaaaaaaaaaaaaaa'<br>
 $aseApiKeyId='aaaaaaaaaaaaaaaaaaaaaaaaa'<br>
 $aseApiKeySecret='aaaaaaaaaaaaaaaaaaaaaaaaa'<br>
-<br>
-After download this project, install all requirements, add the variables and you are ready to run the automation. Just run .\startWebHookProxy.ps1. <br>
-PS: AppScan Presence will connect ASoC and webhookproxy local service. It needs to be up and running at all time.
+3 - Execute .\startWebHookProxy.ps1.
