@@ -1,5 +1,5 @@
 {
-    "hostname": "http://<HOSTNAME>",
+    "hostname": "http://localhost",
     "port": "5000",
     "log_level": "INFO",
 	"asoc_api_key": {
@@ -13,7 +13,7 @@
 				"template": "discord",
 				"handler": "launcher",
 				"type": "json_post",
-				"url": "http://<HOSTNAME>:5000/thirdparty",
+				"url": "http://localhost:5000/thirdparty",
 				"PresenceId": "<APPSCAN_PRESENCE_ID>",
 				"trigger": "ScanExecutionCompleted",
 				"report_config": {
