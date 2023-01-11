@@ -18,7 +18,7 @@ Start-transcript -path .\$xmlfile.log -IncludeInvocationHeader -UseMinimalHeader
 $techScan=$xml.'xml-report'.technology
 $aseAppName=$xml.'xml-report'.layout.'application-name';
 $scanName=$xml.'xml-report'.'scan-information'.'asoc-scan-name';
-#$scanName=$scanName | select-string -pattern '(.*)#'| % {$_.Matches.Groups[1].Value}
+#$aseAppName=$scanName | select-string -pattern '(.*)...'| % {$_.Matches.Groups[1].Value}
 
 # ASE authentication
 $sessionId=$(Invoke-WebRequest -Method "POST" -Headers @{"Accept"="application/json"} -ContentType 'application/json' -Body "{`"keyId`": `"$aseApiKeyId`",`"keySecret`": `"$aseApiKeySecret`"}" -Uri "https://$aseHostname`:9443/ase/api/keylogin/apikeylogin" -SkipCertificateCheck | Select-Object -Expand Content | ConvertFrom-Json | select -ExpandProperty sessionId);
