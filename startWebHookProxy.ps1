@@ -36,7 +36,7 @@ $jsonConfig | ConvertTo-Json -Depth 10 | Out-File .\config.json
 # Downloading AppScan Presence
 $asocToken=$(Invoke-WebRequest -Method "POST" -Headers @{"Accept"="application/json"} -ContentType 'application/json' -Body "{`"keyId`": `"$asocApiKeyId`",`"keySecret`": `"$asocApiKeySecret`"}" -Uri 'https://cloud.appscan.com/api/v4/Account/ApiKeyLogin' -SkipCertificateCheck | Select-Object -Expand Content | ConvertFrom-Json | select -ExpandProperty Token);
 Remove-Item *AppScanPresence* -Force -Recurse
-Invoke-WebRequest -Method "POST" -Headers @{"Accept"="application/json";"Authorization"="Bearer $asocToken"} -ContentType 'application/json' https://cloud.appscan.com/api/v2/Presences/$presenceId/Download/Win_x86_64/v2 -outfile AppScanPresence.zip
+Invoke-WebRequest -Method "GET" -Headers @{"Accept"="application/json";"Authorization"="Bearer $asocToken"} https://cloud.appscan.com/api/v4/Presences/$presenceId/Download/win_x64 -outfile AppScanPresence.zip
 Expand-Archive .\AppScanPresence.zip
 Start-Process .\AppScanPresence\Presence.exe -PassThru -NoNewWindow
 
