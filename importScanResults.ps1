@@ -28,10 +28,19 @@ else{
 
 write-host "$xmlfile being processed.";
 Start-transcript -path .\$xmlfile.log -IncludeInvocationHeader -UseMinimalHeader
+
+# Workaround block (SCA issue)
+$fileContent = Get-Content -Path .\$xmlfile
+$fileContent[2] = "{0}`r`n{1}" -f '<fix-recommendation-group></fix-recommendation-group>', $fileContent[2]
+$fileContent | Set-Content .\$xmlfile
+[XML]$xml = Get-Content .\$xmlfile;
+$xml.'xml-report'.technology='SAST'
+$xml.Save($(Get-Item -Path $xmlfile))
+
 [XML]$xml = Get-Content $xmlfile;
 $techScan=$xml.'xml-report'.technology
 $aseAppName=$xml.'xml-report'.layout.'application-name';
-$scanName=$xml.'xml-report'.'scan-information'.'asoc-scan-name';
+$scanName=$xml.'xml-report'.layout.'asoc-scan-name';
 #$aseAppName=$scanName | select-string -pattern '(.*)...'| % {$_.Matches.Groups[1].Value}
 
 # ASE authentication
