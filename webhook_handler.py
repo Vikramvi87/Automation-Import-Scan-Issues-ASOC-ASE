@@ -1,17 +1,3 @@
-# Copyright 2023 HCL America
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 from datetime import datetime
 import requests
 import time
@@ -19,7 +5,7 @@ import logging
 import json
 import importlib
 
-logger = logging.getLogger('asco_webhook_proxy')
+logger = logging.getLogger('asoc_webhook_proxy')
 
 class WebhookHandler:
     asoc = None
@@ -29,17 +15,17 @@ class WebhookHandler:
         self.config = config
         self.asoc = asoc
     
-    def collectSubjectData(subjectId):
+    def collectSubjectData(self, subjectId):
         if(not self.asoc.checkAuth()):
             if(not self.asoc.login()):
                 logger.error("Cannot login, check network or credentials")
                 return None
-        scanExec = asoc.scanSummary(execId, True)
+        scanExec = self.asoc.scanSummary(subjectId, True)
         if(not scanExec):
-            logger.error(f"Error getting scan execution summary: {execId}")
+            logger.error(f"Error getting scan execution summary: {subjectId}")
             return None
         scanId = scanExec["ScanId"]
-        scan = asoc.scanSummary(scanId)
+        scan = self.asoc.scanSummary(scanId)
         if(not scan):
             logger.error(f"Error getting scan summary: {scanId}")
             return None
@@ -72,8 +58,8 @@ class WebhookHandler:
         time_stamp = now.strftime("%Y-%m-%dT%H:%M:%SZ")
         app = data["scan"]["AppName"]
         scanFinishedRaw = data["scan_execution"]["ScanEndTime"]
-        scanFinishedRaw = scanFinishedRaw[:26]
-        scanFinishedDt = datetime.strptime(scanFinishedRaw,"%Y-%m-%dT%H:%M:%S.%f")
+        scanFinishedRaw = scanFinishedRaw[:19]+"Z"
+        scanFinishedDt = datetime.strptime(scanFinishedRaw,"%Y-%m-%dT%H:%M:%SZ")
         scanFinished = scanFinishedDt.strftime("%Y-%m-%d %H:%M:%S")
         duration_secs = data["scan_execution"]["ExecutionDurationSec"]
         duration_str = time.strftime('%Hh %Mm %Ss', time.gmtime(duration_secs))
@@ -189,9 +175,10 @@ class WebhookHandler:
             ext = webhookObj["report_config"]["Configuration"]["ReportFileType"].lower()
             reportUrl = self.config["hostname"]+":"+str(self.config["port"])+"/reports/"+subjectId+"."+ext
             path = "reports/"+subjectId+"."+ext
+            logger.debug(path)
             if(not self.saveReport(reportTargetId, webhookObj["report_config"], path, trigger)):
                 reportUrl = None
-        
+            logger.debug("Report Saved")
         data = {
             "scan_execution": scanExec,
             "scan": scanData,

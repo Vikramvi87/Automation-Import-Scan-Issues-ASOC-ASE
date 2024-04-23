@@ -1,17 +1,3 @@
-# Copyright 2023 HCL America
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 from flask import Flask, request, Response, send_from_directory
 from asoc import ASoC
 from webhook_handler import WebhookHandler
@@ -36,12 +22,12 @@ if(not os.path.isdir("log")):
         print("Cannot make log directory! Exiting")
         sys.exit(1)
 
-level = logging.INFO
+level = logging.DEBUG
 
 #Setup Logging first
-logger = logging.getLogger('asco_webhook_proxy')
+logger = logging.getLogger('asoc_webhook_proxy')
 logger.setLevel(level)
-fh = logging.FileHandler('log/asco_webhook_proxy.log')
+fh = logging.FileHandler('log/asoc_webhook_proxy.log')
 fh.setLevel(level)
 ch = logging.StreamHandler()
 ch.setLevel(level)
@@ -163,7 +149,7 @@ def saveReport(execId, reportConfig, fullPath):
         if(not asoc.login()):
             logger.error("Cannot login, check network or credentials")
             return False
-    reportId = asoc.startScanReport(execId, reportConfig, True)
+    reportId = asoc.startReport(execId, reportConfig, True)
     if(not reportId):
         logger.error("Error starting report for scan execution {execId}")
         return False
@@ -195,12 +181,12 @@ def respond_asoc(webhook, id):
     #Validate the request parameters
     validated = re.sub(safePattern, '', webhook)
     if(validated != webhook):
-        logger.error("Invalid Chars in Webhook name. Valid = [a-Z0-9\\-_]")
+        logger.error("Invalid Chars in Webhook name. Valid = [a-Z0-9\-_]")
         return Response(status=400)
         
     validated = re.sub(safePattern, '', id)
     if(validated != id):
-        logger.error("Invalid Chars in Scan Exec ID name. Valid = [a-Z0-9\\-_]")
+        logger.error("Invalid Chars in Scan Exec ID name. Valid = [a-Z0-9\-_]")
         return Response(status=400)
     
     #Map the incoming webhook to a WebhookObj in the config
