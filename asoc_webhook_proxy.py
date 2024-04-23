@@ -181,12 +181,12 @@ def respond_asoc(webhook, id):
     #Validate the request parameters
     validated = re.sub(safePattern, '', webhook)
     if(validated != webhook):
-        logger.error("Invalid Chars in Webhook name. Valid = [a-Z0-9\-_]")
+        logger.error("Invalid Chars in Webhook name. Valid = [a-Z0-9\\-_]")
         return Response(status=400)
         
     validated = re.sub(safePattern, '', id)
     if(validated != id):
-        logger.error("Invalid Chars in Scan Exec ID name. Valid = [a-Z0-9\-_]")
+        logger.error("Invalid Chars in Scan Exec ID name. Valid = [a-Z0-9\\-_]")
         return Response(status=400)
     
     #Map the incoming webhook to a WebhookObj in the config
